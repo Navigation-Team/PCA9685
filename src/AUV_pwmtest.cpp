@@ -8,20 +8,20 @@
 #define I2C_BUS 1
 #define AUV_PCA9685_ADDR 0x55
 
-#define PORT 15
+#define PORT 11
 
-#define PORT2 8
+#define PORT2 5
 
-#define PORT3 9
+#define PORT3 4
 
-#define PORT4 10
+#define PORT4 3
 
-#define PORT5 11
+#define PORT5 2
 
-#define PORT6 10
+#define PORT6 1
 
-#define PORT7 9
-#define CALIBRATION_POINT 1550
+#define PORT7 0
+#define CALIBRATION_POINT 1570
 
 int main()
 {
@@ -61,7 +61,7 @@ int main()
 
 	sleep(1);
 */
-	for(int power = CALIBRATION_POINT; power <= CALIBRATION_POINT + 70; ++power)
+	for(int power = CALIBRATION_POINT; power <= CALIBRATION_POINT + 25; ++power)
 	{
 		pwmDriver.setPWM(PORT, (power / 4000.0) * 4095);
 		pwmDriver2.setPWM(PORT2, (power / 4000.0) * 4095);
@@ -70,10 +70,10 @@ int main()
 		/*pwmDriver5.setPWM(PORT5, (power / 4000.0) * 4095);
 		pwmDriver6.setPWM(PORT6, (power / 4000.0) * 4095);
 		pwmDriver7.setPWM(PORT7, (power / 4000.0) * 4095);*/
-		std::this_thread::sleep_for(std::chrono::milliseconds(40));
+		std::this_thread::sleep_for(std::chrono::milliseconds(60));
 	}
 
-	for(int power = CALIBRATION_POINT; power >= CALIBRATION_POINT - 70; --power)
+	for(int power = CALIBRATION_POINT; power >= CALIBRATION_POINT - 25; --power)
 	{
 		pwmDriver.setPWM(PORT, (power / 4000.0) * 4095);
 		pwmDriver2.setPWM(PORT2, (power / 4000.0) * 4095);
@@ -82,7 +82,7 @@ int main()
 		/*pwmDriver5.setPWM(PORT5, (power / 4000.0) * 4095);
 		pwmDriver6.setPWM(PORT6, (power / 4000.0) * 4095);
 		pwmDriver7.setPWM(PORT7, (power / 4000.0) * 4095);*/
-		std::this_thread::sleep_for(std::chrono::milliseconds(40));
+		std::this_thread::sleep_for(std::chrono::milliseconds(60));
 	}
 
 	std::cerr << "Calibration test done" << std::endl;
@@ -97,8 +97,8 @@ int main()
 
 	sleep(1);	
 
-	pwmDriver.setPWM(PORT, ((CALIBRATION_POINT + 50) / 4000.0) * 4095);
-	pwmDriver2.setPWM(PORT2, ((CALIBRATION_POINT + 50) / 4000.0) * 4095);
+	pwmDriver.setPWM(PORT, ((CALIBRATION_POINT + 200) / 4000.0) * 4095);
+	//pwmDriver2.setPWM(PORT2, ((CALIBRATION_POINT + 50) / 4000.0) * 4095);
 	/*pwmDriver3.setPWM(PORT3, ((CALIBRATION_POINT - 50) / 4000.0) * 4095);
 	pwmDriver4.setPWM(PORT4, ((CALIBRATION_POINT - 50) / 4000.0) * 4095);
 	pwmDriver5.setPWM(PORT5, ((CALIBRATION_POINT - 50) / 4000.0) * 4095);
@@ -106,10 +106,10 @@ int main()
 	pwmDriver7.setPWM(PORT7, ((CALIBRATION_POINT - 50) / 4000.0) * 4095);*/
 	
 	
-        pwmDriver3.setPWM(PORT3, ((CALIBRATION_POINT + 50) / 4000.0) * 4095);
-        pwmDriver4.setPWM(PORT4, ((CALIBRATION_POINT + 50) / 4000.0) * 4095);
+        //pwmDriver3.setPWM(PORT3, ((CALIBRATION_POINT + 50) / 4000.0) * 4095);
+        //pwmDriver4.setPWM(PORT4, ((CALIBRATION_POINT + 50) / 4000.0) * 4095);
 	
-	sleep(20);
+	sleep(4);
 
 	pwmDriver.setPWM(PORT, 0);
 

@@ -84,10 +84,10 @@ void PCA9685::setPWM(uint8_t led, int value) {
  \param off_value 0-4095 value to turn off the pulse
  */
 void PCA9685::setPWM(uint8_t led, int on_value, int off_value) {
-		i2c->write_byte(LED0_ON_L + LED_MULTIPLYER * (led - 1), on_value & 0xFF);
-		i2c->write_byte(LED0_ON_H + LED_MULTIPLYER * (led - 1), on_value >> 8);
-		i2c->write_byte(LED0_OFF_L + LED_MULTIPLYER * (led - 1), off_value & 0xFF);
-		i2c->write_byte(LED0_OFF_H + LED_MULTIPLYER * (led - 1), off_value >> 8);
+		i2c->write_byte(LED0_ON_L + LED_MULTIPLYER * led, on_value & 0xFF);
+		i2c->write_byte(LED0_ON_H + LED_MULTIPLYER * led, on_value >> 8);
+		i2c->write_byte(LED0_OFF_L + LED_MULTIPLYER * led, off_value & 0xFF);
+		i2c->write_byte(LED0_OFF_H + LED_MULTIPLYER * led, off_value >> 8);
 }
 
 //! Get current PWM value
